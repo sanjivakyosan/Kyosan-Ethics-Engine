@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyosan Ethics Engine</title>
+    <meta name="copyright" content="©sanjivakyosan">
+    <meta name="author" content="Sanjiva Kyosan">
+    <link rel="stylesheet" href="/static/style.css?v=2">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kyosan Ethics Engine</h1>
+            <p class="subtitle">Comprehensive AI-powered ethical analysis with all systems integrated</p>
+            <hr class="header-divider">
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h2>Input</h2>
+                <div class="input-controls">
+                    <div class="control-group">
+                        <label for="processing-level">Processing Level:</label>
+                        <select id="processing-level">
+                            <option value="basic">Basic</option>
+                            <option value="standard" selected>Standard</option>
+                            <option value="detailed">Detailed</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="ai-service-status" class="ai-service-status-label">
+                            <span class="ai-status-indicator" id="ai-status-indicator">
+                                <span class="status-light" id="ai-status-light"></span>
+                            </span>
+                            <span id="ai-service-model-label">AI Service (…)</span>
+                        </label>
+                    </div>
+                </div>
+                <textarea 
+                    id="user-input" 
+                    placeholder="Enter your text here for ethical analysis..."
+                    rows="10"
+                ></textarea>
+                <div class="conversation-controls">
+                    <div class="conversation-name-group">
+                        <input type="text" id="conversation-name" placeholder="Conversation name..." class="conversation-name-input">
+                    </div>
+                    <div class="button-group">
+                        <button id="new-conversation-btn" class="btn btn-secondary">New Conversation</button>
+                        <button id="save-conversation-btn" class="btn btn-secondary">Save</button>
+                        <button id="load-conversation-btn" class="btn btn-secondary">Load</button>
+                        <button id="clear-conversation-btn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="process-btn" class="btn btn-primary">Process</button>
+                    <button id="clear-btn" class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <h2>Output</h2>
+                <div id="output-container">
+                    <div class="output-placeholder">
+                        <p>Your processed output will appear here...</p>
+                    </div>
+                </div>
+                <div id="follow-up-section" class="follow-up-section">
+                    <h3>Follow-up Questions</h3>
+                    <div id="follow-up-conversation" class="follow-up-conversation"></div>
+                    <div class="follow-up-input-group">
+                        <textarea 
+                            id="follow-up-input" 
+                            placeholder="Ask a follow-up question..."
+                            rows="3"
+                        ></textarea>
+                        <button id="follow-up-btn" class="btn btn-primary">Send Follow-up</button>
+                    </div>
+                </div>
+                <div id="analysis-container" class="analysis-hidden">
+                    <h3>Ethical Analysis</h3>
+                    <div id="analysis-content"></div>
+                    <div id="systems-container" class="systems-container">
+                        <h4>Active Systems</h4>
+                        <div id="systems-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div id="status-indicator" class="status-indicator">
+                <span class="status-dot"></span>
+                <span id="status-text">Ready</span>
+            </div>
+            <div id="processing-time" class="processing-time"></div>
+        </div>
+
+        <footer>
+            <div class="api-info">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div class="footer-section">
+                        <div class="footer-section-header">
+                            <h3>API Endpoints</h3>
+                            <button class="toggle-btn" id="toggle-api-endpoints" aria-label="Toggle API Endpoints">
+                                <span class="toggle-icon">▶</span>
+                            </button>
+                        </div>
+                        <div class="footer-section-content hidden" id="api-endpoints-content">
+                            <ul>
+                                <li><code>POST /api/v1/ethics/process</code> - Process input</li>
+                                <li><code>GET /api/health</code> - Health check</li>
+                                <li><code>GET /api/systems</code> - List all systems</li>
+                            </ul>
+                            <p><a href="/docs" target="_blank">View API Documentation</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <div class="footer-section-header">
+                            <h3>Active Systems</h3>
+                            <button class="toggle-btn" id="toggle-active-systems" aria-label="Toggle Active Systems">
+                                <span class="toggle-icon">▶</span>
+                            </button>
+                        </div>
+                        <div class="footer-section-content hidden" id="active-systems-content">
+                            <div id="footer-systems" style="color: #ffffff; font-size: 0.9em;">
+                                Loading system status...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ffffff; text-align: center; color: #ffffff; font-size: 0.9em;">
+                    <p>©sanjivakyosan 2025</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

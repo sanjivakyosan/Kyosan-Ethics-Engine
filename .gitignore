@@ -1,0 +1,34 @@
+# Environment and secrets (never commit)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+
+# Logs and generated output
+*.log
+server.log
+server_output.log
+validation_report.json
+
+# Runtime data
+ethical_trace_register.json
+
+# IDE and OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Optional: uncomment to ignore saved conversations
+# conversations/*.json
