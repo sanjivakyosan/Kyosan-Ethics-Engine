@@ -418,6 +418,7 @@ class EthicalSystemIntegrator:
                 results["system_analyses"]["value_conflicts"] = {"status": "error", "error": str(e)}
         
         # Step 11: Process through ALL remaining active systems (detailed only)
+        # At "detailed", every system in self.systems is invoked so all systems are active in the pipeline.
         # Basic = core only; standard = core + extended; detailed = core + extended + all remaining
         if self._run_all_remaining_systems(processing_level):
             for system_name, system_instance in self.systems.items():

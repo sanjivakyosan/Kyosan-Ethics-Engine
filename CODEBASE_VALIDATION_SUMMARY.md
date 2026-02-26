@@ -269,7 +269,24 @@ The codebase is fully functional and properly integrated. All systems are:
 
 ---
 
-## Validation
+## Runnable Verification
 
-This document summarizes the codebase state. No separate validation report or script is required for the repo.
+To verify that **all systems are active, implemented, and running in the pipeline**, run from the project root:
+
+```bash
+python validate_all_systems.py
+```
+
+**Expected result:** `VALIDATION: PASSED`
+- All 42 integrator systems load (active or available)
+- At `processing_level='detailed'`, all **43** systems are active in the pipeline (42 integrator systems + PrincipleBasedEthicalProcessor)
+
+**Processing levels:**
+- **basic:** Principle-based check only (PrincipleBasedEthicalProcessor); no other systems run.
+- **standard:** PrincipleBasedEthicalProcessor + 9 extended systems (EthicalProcessor, BiasDetectionSystem, WellbeingAnalysisSystem, ContextValidationSystem, DimensionalAnalysisSystem, MetricsCalculationSystem, UncertaintyManagementSystem, RealTimeDecisionFramework, ValueConflictResolver).
+- **detailed:** All 43 systems active (PrincipleBasedEthicalProcessor + all 42 systems in the integrator). Use this level to ensure every system runs in the pipeline.
+
+---
+
+This document summarizes the codebase state. Re-run `validate_all_systems.py` after changes to confirm all systems remain active in the pipeline.
 
